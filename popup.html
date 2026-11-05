@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Atendente Personalizado Whatsapp</title>
+<style>
+  :root { --green:#128c7e; --bg:#f7f8fa; --border:#d9dde3; --text:#1f2933; }
+  * { box-sizing: border-box; }
+  body { width: 380px; margin: 0; padding: 14px; font: 13px/1.4 system-ui, sans-serif; color: var(--text); background: var(--bg); }
+  h1 { font-size: 14px; gap:8px; margin: 0 0 10px; display:flex; justify-content:space-between; align-items:center; }
+  .card { background:#fff; border:1px solid var(--border); border-radius:8px; padding:10px; margin-bottom:10px; }
+  .status { white-space: pre-line; padding:8px 10px; border-radius:8px; background:#e7f6f3; color:#0b5d52; margin-bottom:10px; }
+  .status.off { background:#fdecea; color:#a12622; }
+  label.row { display:flex; align-items:center; gap:8px; margin:4px 0; }
+  select, input[type=text], input[type=time] { padding:5px 6px; border:1px solid var(--border); border-radius:6px; font:inherit; }
+  .att { display:grid; grid-template-columns: auto 1fr auto auto auto; gap:6px; align-items:center; margin-bottom:8px; }
+  .att input[type=text] { width:100%; min-width:0; }
+  .att .times { grid-column: 2 / 6; display:flex; gap:6px; align-items:center; }
+  button { cursor:pointer; border:1px solid var(--border); background:#fff; border-radius:6px; padding:6px 10px; font:inherit; }
+  button.primary { background:var(--green); color:#fff; border-color:var(--green); }
+  button.del { color:#a12622; padding:4px 8px; }
+  .actions { display:flex; gap:8px; justify-content:space-between; }
+  .hint { color:#66717d; font-size:12px; margin-top:4px; }
+  .preview { font-family: monospace; background:#fafafa; border:1px dashed var(--border); padding:6px 8px; border-radius:6px; margin-top:6px; white-space:pre-wrap; }
+</style>
+</head>
+<body>
+  <h1>Atendente Personalizado Whatsapp
+    <label class="row"><input type="checkbox" id="enabled"> Ativo</label>
+  </h1>
+
+  <div id="status" class="status"></div>
+
+  <div class="card">
+    <label class="row">Modo:
+      <select id="mode">
+        <option value="schedule">Automático por horário</option>
+        <option value="manual">Atendente fixo (manual)</option>
+      </select>
+    </label>
+    <label class="row"><input type="checkbox" id="groups"> Usar também em grupos</label>
+    <label class="row" id="manualRow">Atendente:
+      <select id="manualIndex"></select>
+    </label>
+  </div>
+
+  <div class="card">
+    <div id="list"></div>
+    <div class="actions">
+      <button id="add">+ Adicionar atendente</button>
+      <button id="save" class="primary">Salvar</button>
+    </div>
+    <div class="hint">Horários que viram a meia-noite funcionam (ex.: 22:00 até 06:00).</div>
+    <div class="preview" id="preview"></div>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
