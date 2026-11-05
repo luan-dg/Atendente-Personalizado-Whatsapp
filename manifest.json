@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Atendente Personalizado Whatsapp",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "Adiciona automaticamente o nome do atendente no início das mensagens do WhatsApp Web, com troca por horário.",
   "permissions": [
     "storage"

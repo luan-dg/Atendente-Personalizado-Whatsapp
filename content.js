@@ -87,9 +87,6 @@
       }
     }
 
-    // 3) Nome de quem enviou aparece acima das mensagens recebidas só em grupos
-    if (panel.querySelector('[data-testid="author"]')) return verdict(true, "nome do remetente nas mensagens");
-
     if (sample.length) LOG("ids não reconhecidos (me envie se der problema):", sample);
     return verdict(false, "sem sinais de grupo");
   }
